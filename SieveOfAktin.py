@@ -1,5 +1,6 @@
 #this program defines the a function which implements the sieve of Atkin
 from math import sqrt,ceil
+
 def primes(n):
     if n<2:
         return []
@@ -13,7 +14,7 @@ def primes(n):
     primes=[2]
     primes.extend([(i<<1)+3 for i in xrange(l) if sieve[i]])
     return primes
-
+#Normal method for Primes
 def primes2(n):
     primes=[2]
     flag=False
@@ -107,7 +108,7 @@ def sieveOfAtkin(end):
 
 
 
-
+#Timing the 3 methods of calculating primes
 if __name__=='__main__':
     from timeit import Timer
     t=Timer('primes(10000)','from __main__ import primes')
