@@ -1,17 +1,18 @@
 #this program defines the a function which implements the sieve of Atkin
 from math import sqrt,ceil
-
+#Sieve of Atkin improved
 def primes(n):
     if n<2:
         return []
-    l=n/2-1+n%2
-    sieve=[True]*(l+1)
+    l=n/2-1+n%2 #remove even numbers from length
+    sieve=[True]*(l+1) #assume all numbers are prime
     for i in xrange(int(sqrt(n))>>1):
+        """all bit shifting is so that i,j represents proper elements in the array."""
         if not sieve[i]:
             continue
         for j in xrange((i*(i+3)<<1)+3,l,(i<<1)+3):
             sieve[j]=False
-    primes=[2]
+    primes=[2]  #add 2 to the prime list
     primes.extend([(i<<1)+3 for i in xrange(l) if sieve[i]])
     return primes
 #Normal method for Primes
